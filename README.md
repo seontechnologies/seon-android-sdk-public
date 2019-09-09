@@ -18,19 +18,10 @@ The Device Fingerprint tool collects thorough insight about the devices associat
 
 ```
 dependencies {
-  implementation 'io.seon.androidsdk:androidsdk:2.0.20
+  implementation 'io.seon.androidsdk:androidsdk:2.0.20' {
+    transitive = true
+  }
 }
-```
-
-#### Using Maven
-
-```
-<dependency>
-  <groupId>io.seon.androidsdk</groupId>
-  <artifactId>androidsdk</artifactId>
-  <version>2.0.20</version>
-  <type>pom</type>
-</dependency>
 ```
 
 ## Integration
