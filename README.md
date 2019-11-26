@@ -51,6 +51,12 @@ try {
 
 ## Changelog
 
+#### 2.0.24
+- Bugfixes and performance improvements
+
+#### 2.0.23
+- Performance improvements
+
 #### 2.0.20
 - Removed `start` method
 - Added `scanFingerprint` method
