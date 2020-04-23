@@ -18,7 +18,7 @@ The Device Fingerprint tool collects thorough insight about the devices associat
 
 ```
 dependencies {
-  implementation 'io.seon.androidsdk:androidsdk:2.1.0' {
+  implementation 'io.seon.androidsdk:androidsdk:2.1.1' {
     transitive = true
   }
 }
@@ -51,7 +51,7 @@ try {
 
 ## Changelog
 
-#### 2.1.0
+#### 2.1.1
 - Bugfixes and security improvements
 
 #### 2.0.24
