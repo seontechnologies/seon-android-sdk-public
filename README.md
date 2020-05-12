@@ -18,7 +18,7 @@ The Device Fingerprint tool collects thorough insight about the devices associat
 
 ```
 dependencies {
-  implementation 'io.seon.androidsdk:androidsdk:2.1.2' {
+  implementation 'io.seon.androidsdk:androidsdk:2.1.3' {
     transitive = true
   }
 }
@@ -50,6 +50,9 @@ try {
 > Context parameter is not required, but highly recommended because some important information depends on the application context.
 
 ## Changelog
+
+#### 2.1.3
+- Bugfixes and stability improvements
 
 #### 2.1.2
 - Improved data collection methods
