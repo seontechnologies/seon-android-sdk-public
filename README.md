@@ -18,7 +18,7 @@ The Device Fingerprint tool collects thorough insight about the devices associat
 
 ```
 dependencies {
-  implementation 'io.seon.androidsdk:androidsdk:2.1.4' {
+  implementation 'io.seon.androidsdk:androidsdk:3.0.0' {
     transitive = true
   }
 }
@@ -39,7 +39,7 @@ seonFingerprint.withContext(getApplicationContext()).
         withSessionId(SESSION_ID);
 
 try {
-    seonFingerprint.scanFingerprint(‘[YOUR_PUBLIC_KEY]’);
+    seonFingerprint.getFingerprintBase64();
 } catch (SeonException e) {
     e.printStackTrace();
 } catch (Exception e) {
@@ -50,6 +50,11 @@ try {
 > Context parameter is not required, but highly recommended because some important information depends on the application context.
 
 ## Changelog
+
+#### 3.0.0
+- Removed background HTTP request for data transmission, the SDK returns an encrypted, base64 encoded string to use with SEON's REST API
+- Removed public key support
+- Bugfixes and security improvements
 
 #### 2.1.4
 - Improved data collection methods
