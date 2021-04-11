@@ -18,7 +18,7 @@ The Device Fingerprint tool collects thorough insight about the devices associat
 
 ```
 dependencies {
-  implementation('io.seon.androidsdk:androidsdk:3.0.0') {
+  implementation('io.seon.androidsdk:androidsdk:3.0.2') {
     transitive = true
   }
 }
@@ -50,6 +50,10 @@ try {
 > Context parameter is not required, but highly recommended because some important information depends on the application context.
 
 ## Changelog
+
+#### 3.0.2
+- Improved data collection methods
+- Bugfixes and security improvements
 
 #### 3.0.0
 - Removed background HTTP request for data transmission, the SDK returns an encrypted, base64 encoded string to use with SEON's REST API
