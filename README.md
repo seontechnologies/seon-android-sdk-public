@@ -18,7 +18,7 @@ The Device Fingerprint tool collects thorough insight about the devices associat
 
 ```
 dependencies {
-  implementation('io.seon.androidsdk:androidsdk:3.0.5') {
+  implementation('io.seon.androidsdk:androidsdk:3.0.6') {
     transitive = true
   }
 }
@@ -27,16 +27,16 @@ dependencies {
 ## Integration
 
 ```
-Seon seonFingerprint = SeonBuilder.getInstance();
-
 final String SESSION_ID = "[CUSTOM_SESSION_ID]";
+
+// Build with parameters
+Seon seonFingerprint = new SeonBuilder()
+    .withContext(getApplicationContext())
+    .withSessionId(SESSION_ID)
+    .build();
 
 // Enable logging
 seonFingerprint.setLoggingEnabled(true);
-
-// Set parameters
-seonFingerprint.withContext(getApplicationContext()).
-        withSessionId(SESSION_ID);
 
 try {
     seonFingerprint.getFingerprintBase64();
@@ -50,6 +50,9 @@ try {
 > Context parameter is not required, but highly recommended because some important information depends on the application context.
 
 ## Changelog
+
+#### 3.0.6
+- Bugfixes and compatibility improvements
 
 #### 3.0.5
 - Bugfixes and compatibility improvements
