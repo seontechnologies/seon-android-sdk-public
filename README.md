@@ -18,7 +18,7 @@ The Device Fingerprint tool collects thorough insight about the devices associat
 
 ```
 dependencies {
-  implementation('io.seon.androidsdk:androidsdk:3.0.6') {
+  implementation('io.seon.androidsdk:androidsdk:3.1.0') {
     transitive = true
   }
 }
@@ -46,10 +46,19 @@ try {
     e.printStackTrace();
 }
 ```
+> __NOTE:__ 3.0.6 and earlier versions need to include the following ProGuard rule to avoid JNI runtime errors :
 
-> Context parameter is not required, but highly recommended because some important information depends on the application context.
+```
+-keepclasseswithmembers,includedescriptorclasses class io.seon.androidsdk.service.JNIHandler {
+   native <methods>;
+}
+```
 
 ## Changelog
+
+#### 3.1.0
+- Emulator detection improvements
+- Bugfixes and compatibility improvements
 
 #### 3.0.6
 - Bugfixes and compatibility improvements
