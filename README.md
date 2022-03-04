@@ -56,6 +56,10 @@ try {
 
 ## Changelog
 
+#### 3.2.0
+- Improved, more persistent device identification
+- Bugfixes
+
 #### 3.1.0
 - Emulator detection improvements
 - Bugfixes and compatibility improvements
