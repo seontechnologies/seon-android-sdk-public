@@ -18,16 +18,38 @@ The Device Fingerprint tool collects thorough insight about the devices associat
 
 ```
 dependencies {
-  implementation('io.seon.androidsdk:androidsdk:3.1.0') {
+  implementation('io.seon.androidsdk:androidsdk:3.2.1') {
     transitive = true
   }
 }
 ```
-
 ## Integration
 
+### Kotlin Integration
 ```
-final String SESSION_ID = "[CUSTOM_SESSION_ID]";
+val SESSION_ID = "CUSTOM_SESSION_ID"
+
+// Build with parameters
+val seonFingerprint = SeonBuilder().withContext(applicationContext).withSessionId(sessionID).build()
+
+// Enable logging
+seonFingerprint.setLoggingEnabled(true)
+
+try {
+    seonFingerprint.fingerprintBase64 
+}
+catch (e : SeonException){
+    e.printStackTrace()
+}
+catch (e : Exception){
+    e.printStackTrace()
+}
+
+```
+### Java Integration
+
+```
+final String SESSION_ID = "CUSTOM_SESSION_ID";
 
 // Build with parameters
 Seon seonFingerprint = new SeonBuilder()
@@ -56,6 +78,9 @@ try {
 
 ## Changelog
 
+#### 3.2.1
+- Improved emulator detection accuracy
+- Bugfixes
 #### 3.2.0
 - Improved, more persistent device identification
 - Bugfixes
