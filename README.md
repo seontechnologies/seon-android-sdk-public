@@ -81,6 +81,7 @@ try {
 #### 3.2.1
 - Improved emulator detection accuracy
 - Bugfixes
+
 #### 3.2.0
 - Improved, more persistent device identification
 - Bugfixes
