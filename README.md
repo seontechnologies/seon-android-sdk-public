@@ -77,7 +77,7 @@ try {
 
 ## Changelog
 #### 4.0.0
-- Changed fingerprint method to be async improving speed and reliability
+- Changed fingerprint method to be async, improving speed and reliability
 - device_ip fields are now available
 - Raised SDK build target API level to 33
 - Performance improvements
