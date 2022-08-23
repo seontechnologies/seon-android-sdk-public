@@ -36,12 +36,11 @@ val seonFingerprint = SeonBuilder().withContext(applicationContext).withSessionI
 seonFingerprint.setLoggingEnabled(true)
 
 try {
-    seonFingerprint.fingerprintBase64 
-}
-catch (e : SeonException){
-    e.printStackTrace()
-}
-catch (e : Exception){
+    sfp.getFingerprintBase64 { seonFingerprint: String? ->
+        //set seonFingerprint as the value for the session 
+        //property of your Fraud API request.
+    }
+} catch (e : SeonException){
     e.printStackTrace()
 }
 
@@ -61,10 +60,10 @@ Seon seonFingerprint = new SeonBuilder()
 seonFingerprint.setLoggingEnabled(true);
 
 try {
-    seonFingerprint.getFingerprintBase64();
+    seon.getFingerprintBase64(seonFingerprint->{
+        //set seonFingerprint as the value for the session property of the fraud API request.
+    });
 } catch (SeonException e) {
-    e.printStackTrace();
-} catch (Exception e) {
     e.printStackTrace();
 }
 ```
@@ -77,6 +76,12 @@ try {
 ```
 
 ## Changelog
+#### 4.0.0
+- Changed fingerprint method to be async, improving speed and reliability
+- device_ip fields are now available
+- Raised SDK build target API level to 33
+- Performance improvements
+- Bugfixes
 
 #### 3.2.1
 - Improved emulator detection accuracy
