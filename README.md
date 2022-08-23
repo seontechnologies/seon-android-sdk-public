@@ -35,7 +35,7 @@ val seonFingerprint = SeonBuilder().withContext(applicationContext).withSessionI
 // Enable logging
 seonFingerprint.setLoggingEnabled(true)
 
-try{
+try {
     sfp.getFingerprintBase64 { seonFingerprint: String? ->
         //set seonFingerprint as the value for the session 
         //property of your Fraud API request.
