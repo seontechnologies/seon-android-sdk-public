@@ -30,10 +30,10 @@ dependencies {
 val SESSION_ID = "CUSTOM_SESSION_ID"
 
 // Build with parameters
-val seonFingerprint = SeonBuilder().withContext(applicationContext).withSessionId(sessionID).build()
+val sfp = SeonBuilder().withContext(applicationContext).withSessionId(sessionID).build()
 
 // Enable logging
-seonFingerprint.setLoggingEnabled(true)
+sfp.setLoggingEnabled(true)
 
 try {
     sfp.getFingerprintBase64 { seonFingerprint: String? ->
@@ -76,6 +76,10 @@ try {
 ```
 
 ## Changelog
+#### 4.1.0
+- Improved emulator detection accuracy and troubleshooting
+- Device information dependency updates
+- Socket timeout exception handling
 #### 4.0.0
 - Changed fingerprint method to be async, improving speed and reliability
 - device_ip fields are now available
