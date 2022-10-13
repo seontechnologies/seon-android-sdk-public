@@ -8,7 +8,7 @@ The Device Fingerprint tool collects thorough insight about the devices associat
 - _(optional)_ READ_PHONE_STATE permission for device_id (under API 28)
 - _(optional)_ ACCESS_WIFI_STATE permission for wifi_ssid (under API 27)
 - _(optional)_ ACCESS_NETWORK_STATE permission for network_config
-- _(optional)_ ACCESS_FINE_LOCATION (starting from API 29) or ACCESS_COARSE_LOCATION (starting from API 27) permission for wifi_mac_address and wifi_ssid
+- _(optional)_ ACCESS_FINE_LOCATION (starting from API 29) and ACCESS_COARSE_LOCATION (starting from API 27) permission for wifi_mac_address and wifi_ssid
 
 > __NOTE:__ If the permissions listed are not available the application, the values collected using those permissions will be ignored. We recommend using as much permission as possible based on your use-case to provide reliable device fingerprint.
 
@@ -18,7 +18,7 @@ The Device Fingerprint tool collects thorough insight about the devices associat
 
 ```
 dependencies {
-  implementation('io.seon.androidsdk:androidsdk:3.2.1') {
+  implementation('io.seon.androidsdk:androidsdk:4.1.0') {
     transitive = true
   }
 }
@@ -80,6 +80,7 @@ try {
 - Improved emulator detection accuracy and troubleshooting
 - Device information dependency updates
 - Socket timeout exception handling
+
 #### 4.0.0
 - Changed fingerprint method to be async, improving speed and reliability
 - device_ip fields are now available
