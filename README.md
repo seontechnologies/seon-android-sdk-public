@@ -27,7 +27,7 @@ dependencies {
 
 ### Kotlin Integration
 ```
-val SESSION_ID = "CUSTOM_SESSION_ID"
+val sessionID = "CUSTOM_SESSION_ID"
 
 // Build with parameters
 val sfp = SeonBuilder().withContext(applicationContext).withSessionId(sessionID).build()
