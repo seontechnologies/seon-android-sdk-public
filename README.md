@@ -18,7 +18,7 @@ The Device Fingerprint tool collects thorough insight about the devices associat
 
 ```
 dependencies {
-  implementation('io.seon.androidsdk:androidsdk:4.1.0') {
+  implementation('io.seon.androidsdk:androidsdk:4.1.1') {
     transitive = true
   }
 }
@@ -76,6 +76,9 @@ try {
 ```
 
 ## Changelog
+#### 4.1.1
+- Fixed an issue with the latest emulator detection changes
+
 #### 4.1.0
 - Improved emulator detection accuracy and troubleshooting
 - Device information dependency updates
