@@ -10,7 +10,7 @@ The Device Fingerprint tool collects thorough insight about the devices associat
 - _(optional)_ ACCESS_NETWORK_STATE permission for network_config
 - _(optional)_ ACCESS_FINE_LOCATION (starting from API 29) and ACCESS_COARSE_LOCATION (starting from API 27) permission for wifi_mac_address and wifi_ssid
 
-> __NOTE:__ If the permissions listed are not available the application, the values collected using those permissions will be ignored. We recommend using as much permission as possible based on your use-case to provide reliable device fingerprint.
+> __Note:__ If the permissions listed are not available the application, the values collected using those permissions will be ignored. We recommend using as much permission as possible based on your use-case to provide reliable device fingerprint.
 
 ## Installation
 
@@ -18,7 +18,7 @@ The Device Fingerprint tool collects thorough insight about the devices associat
 
 ```
 dependencies {
-  implementation('io.seon.androidsdk:androidsdk:4.1.1') {
+  implementation('io.seon.androidsdk:androidsdk:5.0.0') {
     transitive = true
   }
 }
@@ -67,7 +67,7 @@ try {
     e.printStackTrace();
 }
 ```
-> __NOTE:__ 3.0.6 and earlier versions need to include the following ProGuard rule to avoid JNI runtime errors :
+> __Note:__ 3.0.6 and earlier versions need to include the following ProGuard rule to avoid JNI runtime errors :
 
 ```
 -keepclasseswithmembers,includedescriptorclasses class io.seon.androidsdk.service.JNIHandler {
@@ -76,6 +76,12 @@ try {
 ```
 
 ## Changelog
+
+#### 5.0.0
+_**Breaking changes:** The newly computed device hash won't be compatible with previous versions_ 
+- Improved device hash persistence and accuracy  
+- Minor fixes and improvements
+
 #### 4.1.1
 - Fixed an issue with the latest emulator detection changes
 
