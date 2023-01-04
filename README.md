@@ -78,7 +78,7 @@ try {
 ## Changelog
 
 #### 5.0.0
-_**Breaking:** The newly computed device hash won't be compatible with previous versions_ 
+_**Breaking changes:** The newly computed device hash won't be compatible with previous versions_ 
 - Improved device hash persistence and accuracy  
 - Minor fixes and improvements
 
