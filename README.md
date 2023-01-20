@@ -18,7 +18,7 @@ The Device Fingerprint tool collects thorough insight about the devices associat
 
 ```
 dependencies {
-  implementation('io.seon.androidsdk:androidsdk:5.0.0') {
+  implementation('io.seon.androidsdk:androidsdk:5.0.1') {
     transitive = true
   }
 }
@@ -76,6 +76,10 @@ try {
 ```
 
 ## Changelog
+
+#### 5.0.1
+- Improved error handling
+- Bugfixes
 
 #### 5.0.0
 _**Breaking changes:** The newly computed device hash won't be compatible with previous versions_ 
