@@ -18,7 +18,7 @@ The Device Fingerprint tool collects thorough insight about the devices associat
 
 ```
 dependencies {
-  implementation('io.seon.androidsdk:androidsdk:5.0.1') {
+  implementation('io.seon.androidsdk:androidsdk:5.0.2') {
     transitive = true
   }
 }
@@ -37,7 +37,7 @@ sfp.setLoggingEnabled(true)
 
 try {
     sfp.getFingerprintBase64 { seonFingerprint: String? ->
-        //set seonFingerprint as the value for the session 
+        //set seonFingerprint as the value for the session
         //property of your Fraud API request.
     }
 } catch (e : SeonException){
@@ -60,7 +60,7 @@ Seon seonFingerprint = new SeonBuilder()
 seonFingerprint.setLoggingEnabled(true);
 
 try {
-    seon.getFingerprintBase64(seonFingerprint->{
+    seon.getFingerprintBase64(fp->{
         //set seonFingerprint as the value for the session property of the fraud API request.
     });
 } catch (SeonException e) {
@@ -77,14 +77,21 @@ try {
 
 ## Changelog
 
+#### 5.0.2
+- Fixed an issue where some older devices couldn't generate a fingerprint
+- Fixed an issue with Bluestacks emulator
+
 #### 5.0.1
 - Improved error handling
 - Bugfixes
 
 #### 5.0.0
-_**Breaking changes:** The newly computed device hash won't be compatible with previous versions_ 
-- Improved device hash persistence and accuracy  
+_**Breaking changes:** The newly computed device hash won't be compatible with previous versions_
+- Improved device hash persistence and accuracy
 - Minor fixes and improvements
+
+#### 4.1.2
+- Fixed an issue where some older devices couldn't generate a fingerprint
 
 #### 4.1.1
 - Fixed an issue with the latest emulator detection changes
