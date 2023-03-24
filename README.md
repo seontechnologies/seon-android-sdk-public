@@ -78,7 +78,7 @@ try {
 ## Changelog
 
 #### 5.0.3
-- Fixed an error on older devices where the SDK sometimes couldn't generate a fingerprint.
+- Fixed an error on some older devices
 - Fixed missing DeviceName warning logs in the console even when logging was set to false
 - Improved Device name and manufacturer identification
 
