@@ -18,7 +18,7 @@ The Device Fingerprint tool collects thorough insight about the devices associat
 
 ```
 dependencies {
-  implementation('io.seon.androidsdk:androidsdk:5.0.2') {
+  implementation('io.seon.androidsdk:androidsdk:5.0.3') {
     transitive = true
   }
 }
@@ -76,6 +76,11 @@ try {
 ```
 
 ## Changelog
+
+#### 5.0.3
+- Fixed an error on some older devices
+- Fixed missing device name warning logs in the console even when logging was set to false
+- Improved device name and manufacturer identification
 
 #### 5.0.2
 - Fixed an issue where some older devices couldn't generate a fingerprint
