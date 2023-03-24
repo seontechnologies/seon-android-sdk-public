@@ -79,8 +79,8 @@ try {
 
 #### 5.0.3
 - Fixed an error on some older devices
-- Fixed missing DeviceName warning logs in the console even when logging was set to false
-- Improved Device name and manufacturer identification
+- Fixed missing device name warning logs in the console even when logging was set to false
+- Improved device name and manufacturer identification
 
 #### 5.0.2
 - Fixed an issue where some older devices couldn't generate a fingerprint
