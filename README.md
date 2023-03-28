@@ -60,8 +60,8 @@ Seon seonFingerprint = new SeonBuilder()
 seonFingerprint.setLoggingEnabled(true);
 
 try {
-    seon.getFingerprintBase64(fp->{
-        //set seonFingerprint as the value for the session property of the fraud API request.
+    seonFingerprint.getFingerprintBase64(fp->{
+        //set fp as the value for the session property of the fraud API request.
     });
 } catch (SeonException e) {
     e.printStackTrace();
