@@ -18,7 +18,7 @@ The Device Fingerprint tool collects thorough insight about the devices associat
 
 ```
 dependencies {
-  implementation('io.seon.androidsdk:androidsdk:5.0.3') {
+  implementation('io.seon.androidsdk:androidsdk:5.1.0') {
     transitive = true
   }
 }
@@ -76,6 +76,9 @@ try {
 ```
 
 ## Changelog
+#### 5.1.0
+- Rootbeer dependency updated to 0.1.0
+- Minor fixes and improvements
 
 #### 5.0.3
 - Fixed an error on some older devices
