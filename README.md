@@ -18,7 +18,7 @@ The Device Fingerprint tool collects thorough insight about the devices associat
 
 ```
 dependencies {
-  implementation('io.seon.androidsdk:androidsdk:5.1.0') {
+  implementation('io.seon.androidsdk:androidsdk:5.1.1') {
     transitive = true
   }
 }
@@ -76,6 +76,10 @@ try {
 ```
 
 ## Changelog
+
+#### 5.1.1
+- Fix some rare occasions where fingerprint generation can get stuck on some environments with a 'Fingerprint could not be generated' message
+
 #### 5.1.0
 - Rootbeer dependency updated to 0.1.0
 - Minor fixes and improvements
