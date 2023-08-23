@@ -18,7 +18,7 @@ The Device Fingerprint tool collects thorough insight about the devices associat
 
 ```
 dependencies {
-  implementation('io.seon.androidsdk:androidsdk:5.1.2') {
+  implementation('io.seon.androidsdk:androidsdk:5.1.3') {
     transitive = true
   }
 }
@@ -77,11 +77,17 @@ try {
 
 ## Changelog
 
+#### 5.1.3
+- Fixed a few Context type related issues
+- Fixed a possible Cursor object leak
+- Fixed network related strict mode warnings
+- Minor performance improvements
+
 #### 5.1.2
-- Fix a concurrency issue if the Seon object is not instantiated on the main thread
+- Fixed a concurrency issue if the Seon object is not instantiated on the main thread
 
 #### 5.1.1
-- Fix some rare occasions where fingerprint generation can get stuck on some environments with a 'Fingerprint could not be generated' message
+- Fixed some rare occasions where fingerprint generation can get stuck on some environments with a 'Fingerprint could not be generated' message
 
 #### 5.1.0
 - Rootbeer dependency updated to 0.1.0
