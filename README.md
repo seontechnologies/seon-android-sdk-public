@@ -5,11 +5,11 @@ The Device Fingerprint tool collects thorough insight about the devices associat
 ## Requirements
 - Android 5.0 or higher (API level 21)
 - **INTERNET** permission
-- _(optional)_ **READ_PHONE_STATE** permission for device_id (under API 28)
-- _(optional)_ **ACCESS_WIFI_STATE** permission for wifi_ssid (under API 27)
-- _(optional)_ **ACCESS_NETWORK_STATE** permission for network_config
-- _(optional)_ **ACCESS_FINE_LOCATION** (starting from API 29) and ACCESS_COARSE_LOCATION (starting from API 27) permission for wifi_mac_address and wifi_ssid
-- _(optional)_ **com.google.android.providers.gsf.permission.READ_GSERVICES**
+- _(optional)_ **READ_PHONE_STATE** permission for `device_id` (under API 28)
+- _(optional)_ **ACCESS_WIFI_STATE** permission for `wifi_ssid` (under API 27)
+- _(optional)_ **ACCESS_NETWORK_STATE** permission for `network_config`
+- _(optional)_ **ACCESS_FINE_LOCATION** (starting from API 29) and ACCESS_COARSE_LOCATION (starting from API 27) permission for `wifi_mac_address` and `wifi_ssid`
+- _(optional)_ **com.google.android.providers.gsf.permission.READ_GSERVICES** for `gsf_id`
 
 > __Note:__ If the permissions listed are not available the application, the values collected using those permissions will be ignored. We recommend using as much permission as possible based on your use-case to provide reliable device fingerprint.
 
