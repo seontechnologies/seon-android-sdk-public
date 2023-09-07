@@ -30,7 +30,7 @@ dependencies {
 ```
 ## Integration
 
->### __Note:__ Starting from v6.0.1 there is a change in SEON’s API Policy. From now on SEON might introduce new fields in the SDK with minor versions. We advise you to integrate in a way that addition of new fields is handled gracefully.
+>### __Note:__ Starting from v6 there is a change in SEON’s API Policy. From now on SEON might introduce new fields in the SDK with minor versions. We advise you to integrate in a way that addition of new fields is handled gracefully.
 
 ### Kotlin Integration
 ```
@@ -88,7 +88,7 @@ try {
 ## 6.0.1
 ### Important Integration changes
 
-- #### Starting from v6.0.1 there is a change in SEON’s API Policy. From now on SEON might introduce new fields in the SDK with minor versions. We advise you to integrate in a way that addition of new fields is handled gracefully.
+- #### Starting from v6 there is a change in SEON’s API Policy. From now on SEON might introduce new fields in the SDK with minor versions. We advise you to integrate in a way that addition of new fields is handled gracefully.
 
 - #### `device_hash` field is calculated differently, resulting in different values for a given device. This means these values are going to break between versions.
 - #### Raised minimum API level to 21
