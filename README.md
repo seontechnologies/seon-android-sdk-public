@@ -1,6 +1,10 @@
 # Overview
 
-The Device Fingerprint tool collects thorough insight about the devices associated to a user. Account takeovers and multiple account signups, payments can easily be avoided by applying the Device Fingerprinting module. To implement SEON SDK for Android, follow the steps below.
+SEON's Device Fingerprinting SDK collects insights about the device associated to a user and allows developers to integrate device identification into native Android apps.
+
+Account takeovers, multiple account signups and payments can easily be avoided by using SEON's Device Fingerprinting SDK.
+
+
 
 ## Requirements
 - Android 5.0 or higher (API level 21)
@@ -11,7 +15,7 @@ The Device Fingerprint tool collects thorough insight about the devices associat
 - _(optional)_ **ACCESS_FINE_LOCATION** (starting from API 29) and ACCESS_COARSE_LOCATION (starting from API 27) permission for `wifi_mac_address` and `wifi_ssid`
 - _(optional)_ **com.google.android.providers.gsf.permission.READ_GSERVICES** for `gsf_id`
 
-> __Note:__ If the permissions listed are not available the application, the values collected using those permissions will be ignored. We recommend using as much permission as possible based on your use-case to provide reliable device fingerprint.
+> __Note:__ If the optional permissions listed are not available the application, the values collected using those permissions will be ignored. We recommend using as much permission as possible based on your use-case to provide reliable device fingerprint.
 
 ## Installation
 
@@ -84,11 +88,11 @@ try {
 ## 6.0.0
 ### Important Integration changes
 
-- ### Starting from v6.0.0 there is a change in SEON’s API Policy. From now on SEON might introduce new fields in the SDK with minor versions. We advise you to integrate in a way that addition of new fields is handled gracefully.
+- #### Starting from v6.0.0 there is a change in SEON’s API Policy. From now on SEON might introduce new fields in the SDK with minor versions. We advise you to integrate in a way that addition of new fields is handled gracefully.
 
-- ### `device_hash` field is calculated differently, resulting in different values for a given device. This means these values are going to break between versions.
-- ### Raised minimum API level to 21
-- ### Removed deprecated interface members:
+- #### `device_hash` field is calculated differently, resulting in different values for a given device. This means these values are going to break between versions.
+- #### Raised minimum API level to 21
+- #### Removed deprecated interface members:
   - `SeonBuilder.seon`
   - `SeonBuilder.getInstance()`
 
@@ -102,6 +106,7 @@ try {
   - Introducing various new response fields
   - General performance improvements
   - Improved stability of device hash
+  - Improved error handling
 
 
 ### New response fields
@@ -163,7 +168,7 @@ try {
 - Fixed missing device name warning logs in the console even when logging was set to false
 - Improved device name and manufacturer identification
 
-#### 5.0.2
+## 5.0.2
 - Fixed an issue where some older devices couldn't generate a fingerprint
 - Fixed an issue with Bluestacks emulator
 
