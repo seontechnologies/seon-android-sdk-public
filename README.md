@@ -9,7 +9,7 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 ## Requirements
 - Android 5.0 or higher (API level 21)
 - **INTERNET** permission
-- _(optional)_ **READ_PHONE_STATE** permission for `device_id` (under API 28)
+- _(optional)_ **READ_PHONE_STATE** permission for `is_on_call` and `device_id` (under API 28)
 - _(optional)_ **ACCESS_WIFI_STATE** permission for `wifi_ssid` (under API 27)
 - _(optional)_ **ACCESS_NETWORK_STATE** permission for `network_config`
 - _(optional)_ **ACCESS_FINE_LOCATION** (starting from API 29) and ACCESS_COARSE_LOCATION (starting from API 27) permission for `wifi_mac_address` and `wifi_ssid`
@@ -118,12 +118,15 @@ try {
 - `gsf_id` Returns a unique identifier which only changes after a factory reset is performed on the device.
 
   ***Requires permission: com.google.android.providers.gsf.permission.READ_GSERVICES***
+
 - `interfering_apps` Contains the list of installed applications that were given permissions to potentially interfere with other applications on the device by our metric. *Accurate results to the given metric. Applications might interfere with the host application through different methods/permissions, which are not detected here.*
 - `is_click_automator_installed` Returns true if the SDK detects enabled click automator applications known to us.
 - `is_keyguard_secure` Indicates whether the keyguard is secured by a PIN, pattern or password or a SIM card is currently locked.
 - `is_nfc_available` Returns whether the device has NFC hardware available.
 - `is_nfc_enabled` Returns whether the device has NFC functionalities enabled.
-- `is_on_call` Returns true or false depending on whether the device was on a call while collecting the fingerprint.   Detects both cellular and VOIP calls.
+- `is_on_call` Returns true or false depending on whether the device was on a call while collecting the fingerprint. Detects both cellular and VOIP calls.
+
+  ***Requires permission: com.google.android.providers.gsf.permission.READ_GSERVICES***
 - `is_remote_control_connected` Returns whether the device is being remotely controlled by a known remote control application at the time of the fingerprint.
 - `is_screen_being_mirrored` Returns whether the screen of the device is being mirrored to an additional display. This is triggered by screen sharing, screen mirroring to a television, using a display through HDMI connection, etc. This might be the indicator of the user’s screen content is being visible to someone else in some way.
 - `remote_control_provider` If is_remote_control_connected is true, this field returns the readable name of detected remote control application, otherwise null.
