@@ -126,7 +126,7 @@ try {
 - `is_nfc_enabled` Returns whether the device has NFC functionalities enabled.
 - `is_on_call` Returns true or false depending on whether the device was on a call while collecting the fingerprint. Detects both cellular and VOIP calls.
 
-  ***Requires permission: com.google.android.providers.gsf.permission.READ_GSERVICES***
+  ***Requires permission: android.permission.READ_PHONE_STATE***
 - `is_remote_control_connected` Returns whether the device is being remotely controlled by a known remote control application at the time of the fingerprint.
 - `is_screen_being_mirrored` Returns whether the screen of the device is being mirrored to an additional display. This is triggered by screen sharing, screen mirroring to a television, using a display through HDMI connection, etc. This might be the indicator of the user’s screen content is being visible to someone else in some way.
 - `remote_control_provider` If is_remote_control_connected is true, this field returns the readable name of detected remote control application, otherwise null.
