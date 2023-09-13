@@ -9,9 +9,9 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 ## Requirements
 - Android 5.0 or higher (API level 21)
 - **INTERNET** permission
-- _(optional)_ **READ_PHONE_STATE** permission for `is_on_call` and `device_id` (under API 28)
+- _(optional)_ **READ_PHONE_STATE** permission for `is_on_call` and `device_cellular_id` (under API 28)
 - _(optional)_ **ACCESS_WIFI_STATE** permission for `wifi_ssid` (under API 27)
-- _(optional)_ **ACCESS_NETWORK_STATE** permission for `network_config`
+- _(optional)_ **ACCESS_NETWORK_STATE** permission for `network_config` for WiFi configurations and **READ_PHONE_STATE** for cellular data configurations
 - _(optional)_ **ACCESS_FINE_LOCATION** (starting from API 29) and ACCESS_COARSE_LOCATION (starting from API 27) permission for `wifi_mac_address` and `wifi_ssid`
 - _(optional)_ **com.google.android.providers.gsf.permission.READ_GSERVICES** for `gsf_id`
 
