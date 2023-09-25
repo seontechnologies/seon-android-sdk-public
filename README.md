@@ -95,7 +95,7 @@ try {
 ### Bugfixes
 - Fixed a bug where the SDK's emulator detection returned false positive results in some rare cases.
 - Fixed `device_hash`'s occasional non-uniqueness, which resulted in different physical devices generating the same `device_hash` in rare scenarios. 
-> __Note:__ This is NOT a breaking change to the `device_hash` property, the hash only changes for approximately <`0.5%` of all devices, where the `device_hash` was not unique previously.   
+> __Note:__ This is NOT a breaking change to the `device_hash` property, the hash only changes for approximately less than `0.5%` of all devices, where the `device_hash` was not unique previously.   
 
 ### Other
 - Internal changes to prepare for upcoming features
