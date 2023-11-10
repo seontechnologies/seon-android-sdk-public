@@ -5,7 +5,6 @@ SEON's Device Fingerprinting SDK collects insights about the device associated t
 Account takeovers, multiple account signups and payments can easily be avoided by using SEON's Device Fingerprinting SDK.
 
 
-
 ## Requirements
 - Android 5.0 or higher (API level 21)
 - **INTERNET** permission
@@ -23,7 +22,7 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 
 ```
 dependencies {
-  implementation('io.seon.androidsdk:androidsdk:6.0.2') {
+  implementation('io.seon.androidsdk:androidsdk:6.0.3') {
     transitive = true
   }
 }
@@ -85,6 +84,17 @@ try {
 ```
 
 # Changelog
+## 6.0.3
+- Improved auto clicker detection
+- Improved emulator detection for:
+  - Windows Subsystem for Android
+  - Redfinger Cloud
+  - Bliss OS
+  - Virtual Box
+  - VMWare
+  - Andy
+- Fix occasional StaleDataException on Samsung devices
+
 ## 6.0.2
 
 ### New features and improvements
