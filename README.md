@@ -22,7 +22,7 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 
 ```
 dependencies {
-  implementation('io.seon.androidsdk:androidsdk:6.0.3') {
+  implementation('io.seon.androidsdk:androidsdk:6.1.0') {
     transitive = true
   }
 }
@@ -84,6 +84,13 @@ try {
 ```
 
 # Changelog
+## 6.1.0
+- Improved emulator detection based on high volume data analysis
+- Fine-tuned root detection's sensitivity
+
+### Other
+- Internal changes to prepare for upcoming features
+
 ## 6.0.3
 - Improved auto clicker detection
 - Improved emulator detection for:
