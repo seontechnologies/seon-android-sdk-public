@@ -85,7 +85,7 @@ try {
 
 # Changelog
 ## 6.1.1
-- Fixed an issue related to `region_timezone` field 
+- Fixed an encoding issue related to `region_timezone` field 
 
 ## 6.1.0
 - Improved emulator detection based on high volume data analysis
