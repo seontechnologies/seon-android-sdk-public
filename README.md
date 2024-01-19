@@ -22,7 +22,7 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 
 ```
 dependencies {
-  implementation('io.seon.androidsdk:androidsdk:6.1.0') {
+  implementation('io.seon.androidsdk:androidsdk:6.1.1') {
     transitive = true
   }
 }
@@ -84,6 +84,9 @@ try {
 ```
 
 # Changelog
+## 6.1.1
+- Fixed an issue related to `region_timezone` field 
+
 ## 6.1.0
 - Improved emulator detection based on high volume data analysis
 - Fine-tuned root detection's sensitivity
