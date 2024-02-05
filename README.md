@@ -22,7 +22,7 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 
 ```
 dependencies {
-  implementation('io.seon.androidsdk:androidsdk:6.1.1') {
+  implementation('io.seon.androidsdk:androidsdk:6.1.2') {
     transitive = true
   }
 }
@@ -84,6 +84,12 @@ try {
 ```
 
 # Changelog
+## 6.1.2
+- Added consumer ProGuard rules to prevent stripping of SDK resources
+
+### Other
+- Internal changes to prepare for upcoming feature improvements
+
 ## 6.1.1
 - Fixed an encoding issue related to `region_timezone` field 
 
