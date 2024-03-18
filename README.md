@@ -22,7 +22,7 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 
 ```
 dependencies {
-  implementation('io.seon.androidsdk:androidsdk:6.1.2') {
+  implementation('io.seon.androidsdk:androidsdk:6.2.0') {
     transitive = true
   }
 }
@@ -37,9 +37,15 @@ val sessionID = "CUSTOM_SESSION_ID"
 
 // Build the Seon object with the required parameters
 // an application context and a session_id
+//
+// Optional - You can optionally set a custom timeout for the SDK's network call
+// with passing the following method to SeonBuilder: withDnsTimeout(int timeout)
+// Note: Passing 0 here effectively skips the netowrk logic which in turn won't
+// populate the Fraud API fields with device_ip_* and dns_ip_* prefixes
+
 val sfp = SeonBuilder().withContext(applicationContext).withSessionId(sessionID).build()
 
-// Enable logging
+// Optional - Enable logging
 sfp.setLoggingEnabled(true)
 
 try {
@@ -59,12 +65,18 @@ final String SESSION_ID = "CUSTOM_SESSION_ID";
 
 // Build the Seon object with the required parameters
 // an application context and a session_id
+//
+// Optional - You can optionally set a custom timeout for the SDK's network call
+// with passing the following method to SeonBuilder: withDnsTimeout(int timeout)
+// Note: Passing 0 here effectively skips the netowrk logic which in turn won't
+// populate the Fraud API fields with device_ip_* and dns_ip_* prefixes
+
 Seon seonFingerprint = new SeonBuilder()
     .withContext(getApplicationContext())
     .withSessionId(SESSION_ID)
     .build();
 
-// Enable logging
+// Optional - Enable logging
 seonFingerprint.setLoggingEnabled(true);
 
 try {
@@ -84,6 +96,12 @@ try {
 ```
 
 # Changelog
+
+## 6.2.0
+- Improve Fingerprint execution time and general SDK performance
+- Introduced optional DNS timeout confing on SeonBuilder
+- Internal changes
+
 ## 6.1.2
 - Added consumer ProGuard rules to prevent stripping of SDK resources
 
@@ -91,7 +109,7 @@ try {
 - Internal changes to prepare for upcoming feature improvements
 
 ## 6.1.1
-- Fixed an encoding issue related to `region_timezone` field 
+- Fixed an encoding issue related to `region_timezone` field
 
 ## 6.1.0
 - Improved emulator detection based on high volume data analysis
