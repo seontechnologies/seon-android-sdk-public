@@ -38,7 +38,7 @@ val sessionID = "CUSTOM_SESSION_ID"
 // Build the Seon object with the required parameters
 // an application context and a session_id
 //
-// Optional - You can optionally set a custom timeout for the SDK's network call in
+// Optional - You can optionally set a custom timeout for the SDK's network call
 // with passing the following method to SeonBuilder: withDnsTimeout(int timeoutInMillisec)
 // Note: Passing 0 here effectively skips the netowrk logic which in turn won't
 // populate the Fraud API fields with device_ip_* and dns_ip_* prefixes
