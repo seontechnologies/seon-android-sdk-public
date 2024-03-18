@@ -98,7 +98,7 @@ try {
 # Changelog
 
 ## 6.2.0
-- Improve Fingerprint execution time and general SDK performance
+- Improved Fingerprint execution time and general SDK performance
 - Introduced optional DNS timeout confing on SeonBuilder
 - Internal changes
 
