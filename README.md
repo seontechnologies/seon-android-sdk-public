@@ -11,10 +11,13 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 - _(optional)_ **READ_PHONE_STATE** permission for `is_on_call` and `device_cellular_id` (under API 28)
 - _(optional)_ **ACCESS_WIFI_STATE** permission for `wifi_ssid` (under API 27)
 - _(optional)_ **ACCESS_NETWORK_STATE** permission for `network_config` for WiFi configurations and **READ_PHONE_STATE** for cellular data configurations
-- _(optional)_ **ACCESS_FINE_LOCATION** (starting from API 29) and ACCESS_COARSE_LOCATION (starting from API 27) permission for `wifi_mac_address` and `wifi_ssid`
+- _(optional)_ **ACCESS_FINE_LOCATION** (starting from API 29) and ACCESS_COARSE_LOCATION (starting from API 27) permission for `wifi_mac_address`, `wifi_ssid`, `device_location`*
+- _(optional)_ **ACCESS_BACKGROUND_LOCATION** (starting from API 29) permission for to get location updates even if the application is in the background
 - _(optional)_ **com.google.android.providers.gsf.permission.READ_GSERVICES** for `gsf_id`
 
 > __Note:__ If the optional permissions listed are not available the application, the values collected using those permissions will be ignored. We recommend using as much permission as possible based on your use-case to provide reliable device fingerprint.
+
+> __*device_location:__ Please see the Geolocation Integration section for more info
 
 ## Installation
 
@@ -22,11 +25,31 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 
 ```
 dependencies {
-  implementation('io.seon.androidsdk:androidsdk:6.2.0') {
+  implementation('io.seon.androidsdk:androidsdk:6.3.0') {
     transitive = true
+    // exclude ...
   }
 }
 ```
+
+### Troubleshooting possible import errors
+If there's a duplicate class error due to conflicting versions of the Bouncy Castle dependency, which could look like the following error message:
+```
+Duplicate class org.bouncycastle.LICENSE found in modules jetified-bcprov-jdk14-1.77 (org.bouncycastle:bcprov-jdk14:1.77) and jetified-bcprov-jdk18on-1.77 (org.bouncycastle:bcprov-jdk18on:1.77)
+```
+In this case, please add the following line to the SDK's implementation block to remove SEON's version of the module:
+```
+exclude group: 'org.bouncycastle', module: 'bcprov-jdk14'
+```
+### Known issues in previous versions
+On earlier versions you might to need to include the following ProGuard rule to avoid JNI runtime errors :
+```
+-keepclasseswithmembers,includedescriptorclasses class io.seon.androidsdk.service.JNIHandler {
+   native <methods>;
+}
+```
+
+
 ## Integration
 
 >### __Note:__ Starting from v6 there is a change in SEON’s API Policy. From now on SEON might introduce new fields in the SDK with minor versions. We advise you to integrate in a way that addition of new fields is handled gracefully.
@@ -87,16 +110,63 @@ try {
     e.printStackTrace();
 }
 ```
-> __Note:__ 3.0.6 and earlier versions need to include the following ProGuard rule to avoid JNI runtime errors :
+
+## Geolocation Integration (Opt-in)
+**To enable SEON’s geolocation feature on your account please reach out the customer success team to enable the functionality on your Admin page and your Scoring Engine!**
+
+> __Note:__ Currently even if the integration has been done correctly there won't be a **device_location** field in the Fraud API response until the feature flag has been set by our customer success team.
+
+### Kotlin Integration
+```
+// Create a custom Geolocation Config object
+val seonGeolocationConfig = SeonGeolocationConfigBuilder()
+    .withPrefetchEnabled(true) // When enabled, prefetch location from the API on init for better performance
+    .withGeolocationServiceTimeoutMs(3000) // The timeout in milliseconds for the location service
+    .withMaxGeoLocationCacheAgeSec(600) // Maximum Location data age permitted in seconds
+    .build()
+
+val seon = SeonBuilder()
+    .withContext(applicationContext)
+    .withSessionId(UUID.randomUUID().toString())
+    .withGeolocationEnabled() // must be explicitly enabled to turn on the Geolocation feature
+    .withGeoLocationConfig(seonGeolocationConfig) // optional config
+    .build()
+
+// Geolocation and SeonGeolocationConfig can also be set later on the Seon object
+seon.setGeolocationEnabled(true)
+seon.setGeoLocationConfig(seonGeolocationConfig)
 
 ```
--keepclasseswithmembers,includedescriptorclasses class io.seon.androidsdk.service.JNIHandler {
-   native <methods>;
-}
+
+### Java Integration
 ```
+// Create a custom Geolocation Config object
+        SeonGeolocationConfig seonGeolocationConfig = new SeonGeolocationConfigBuilder()
+                .withPrefetchEnabled(true) // When enabled, prefetch location from the API on init for better performance
+                .withGeolocationServiceTimeoutMs(3000) // The timeout in milliseconds for the location service
+                .withMaxGeoLocationCacheAgeSec(600) // Maximum Location data age permitted in seconds
+                .build();
+
+        seon = new SeonBuilder()
+                .withContext(getApplicationContext())
+                .withSessionId(UUID.randomUUID().toString())
+                .withGeolocationEnabled() // must be explicitly enabled to turn on the Geolocation feature
+                .withGeoLocationConfig(seonGeolocationConfig) // optional config
+                .build();
+
+        // Geolocation and SeonGeolocationConfig can also be set later on the Seon object
+        seon.setGeolocationEnabled(true);
+        seon.setGeoLocationConfig(seonGeolocationConfig);
+```
+
+
 
 # Changelog
 
+## 6.3.0
+- Added GeoLocation feature, the SDK now optionally can retrieve the device's location. See the documentation about how to use it.
+- Internal improvements and changes for upcoming features
+- Added **Bouncy Castle - jdk14 v1.77** as a new dependency. If it causes any dependency conflicts, please follow the documentation about resolving the conflict.
 ## 6.2.0
 - Improved Fingerprint execution time and general SDK performance
 - Introduced optional DNS timeout confing on SeonBuilder
@@ -138,8 +208,8 @@ try {
 
 ### Bugfixes
 - Fixed a bug where the SDK's emulator detection returned false positive results in some rare cases.
-- Fixed `device_hash`'s occasional non-uniqueness, which resulted in different physical devices generating the same `device_hash` in rare scenarios. 
-> __Note:__ This is NOT a breaking change to the `device_hash` property, the hash only changes for approximately less than `0.5%` of all devices, where the `device_hash` was not unique previously.   
+- Fixed `device_hash`'s occasional non-uniqueness, which resulted in different physical devices generating the same `device_hash` in rare scenarios.
+> __Note:__ This is NOT a breaking change to the `device_hash` property, the hash only changes for approximately less than `0.5%` of all devices, where the `device_hash` was not unique previously.
 
 ### Other
 - Internal changes to prepare for upcoming features
