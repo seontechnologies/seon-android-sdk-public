@@ -25,7 +25,7 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 
 ```
 dependencies {
-  implementation('io.seon.androidsdk:androidsdk:6.3.0') {
+  implementation('io.seon.androidsdk:androidsdk:6.4.0') {
     transitive = true
     // exclude ...
   }
@@ -162,11 +162,35 @@ seon.setGeoLocationConfig(seonGeolocationConfig)
 
 
 # Changelog
+## 6.4.0
+- Improved emulator detection
+- Added VPN detection logic and the related response field:
+  - `vpn_state` Returns the vpn connection state of the device. The possible return values are:
+    - `"UNKNOWN"`
+    - `"CONNECTED"`
+    - `"NOT_CONNECTED"`
+- Added proxy detection logic and the following related response fields:
+  - `proxy_state` Returns the proxy connection state of the device. The possible return values are:
+    - `"UNKNOWN"`
+    - `"CONNECTED"`
+    - `"NOT_CONNECTED"`
+  - `proxy_address` Returns a String value of the connected proxy's host address followed by the port. The value can be null if no proxy connection has been found. Example value: `"111.11.11.11:8008"`
+- Added the following new device information response fields:
+  - `first_api_level` Returns an integer value of the stock API level the device has shipped with. The value can be -1 if the api level can't be determined.
+  - `power_source` Returns a predefined String value of the type of the currently plugged in power source. Possible values are:
+    - `"NO DATA"`
+    - `"AC"`
+    - `"USB"`
+    - `"WIRELESS"`
+    - `"DOCK"`
+- Improved clarity of client side exceptions regarding incorrect SDK integrations.
+- Internal changes for upcoming features.
 
 ## 6.3.0
 - Added GeoLocation feature, the SDK now optionally can retrieve the device's location. See the documentation about how to use it.
 - Internal improvements and changes for upcoming features
 - Added **Bouncy Castle - jdk14 v1.77** as a new dependency. If it causes any dependency conflicts, please follow the documentation about resolving the conflict.
+
 ## 6.2.0
 - Improved Fingerprint execution time and general SDK performance
 - Introduced optional DNS timeout confing on SeonBuilder
