@@ -25,15 +25,12 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 
 ```
 dependencies {
-  implementation('io.seon.androidsdk:androidsdk:6.4.0') {
-    transitive = true
-    // exclude ...
-  }
+  implementation 'io.seon.androidsdk:androidsdk:6.4.1'
 }
 ```
 
-### Troubleshooting possible import errors
-If there's a duplicate class error due to conflicting versions of the Bouncy Castle dependency, which could look like the following error message:
+### Known issues in previous versions
+If there's a duplicate class error due to conflicting versions of the Bouncy Castle dependency in `6.3.0` and `6.4.0`, which could look like the following error message:
 ```
 Duplicate class org.bouncycastle.LICENSE found in modules jetified-bcprov-jdk14-1.77 (org.bouncycastle:bcprov-jdk14:1.77) and jetified-bcprov-jdk18on-1.77 (org.bouncycastle:bcprov-jdk18on:1.77)
 ```
@@ -41,7 +38,8 @@ In this case, please add the following line to the SDK's implementation block to
 ```
 exclude group: 'org.bouncycastle', module: 'bcprov-jdk14'
 ```
-### Known issues in previous versions
+---
+
 On earlier versions you might to need to include the following ProGuard rule to avoid JNI runtime errors :
 ```
 -keepclasseswithmembers,includedescriptorclasses class io.seon.androidsdk.service.JNIHandler {
@@ -162,6 +160,9 @@ seon.setGeoLocationConfig(seonGeolocationConfig)
 
 
 # Changelog
+## 6.4.1
+- Fixed strict mode policy warning
+- Removed transitive dependency on Bouncy Castle
 ## 6.4.0
 - Improved emulator detection
 - Added VPN detection logic and the related response field:
