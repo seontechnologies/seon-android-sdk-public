@@ -25,7 +25,7 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 
 ```
 dependencies {
-  implementation 'io.seon.androidsdk:androidsdk:6.4.1'
+  implementation 'io.seon.androidsdk:androidsdk:6.4.2'
 }
 ```
 
@@ -160,6 +160,10 @@ seon.setGeoLocationConfig(seonGeolocationConfig)
 
 
 # Changelog
+## 6.4.2
+- Fixed a rare issue with payload generation
+- Improved emulator detection
+- Internal changes for upcoming features.
 ## 6.4.1
 - Fixed strict mode policy warning
 - Removed transitive dependency on Bouncy Castle
