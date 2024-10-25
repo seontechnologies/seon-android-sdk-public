@@ -25,7 +25,7 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 
 ```
 dependencies {
-  implementation 'io.seon.androidsdk:androidsdk:6.5.0'
+  implementation 'io.seon.androidsdk:androidsdk:6.5.1'
 }
 ```
 
@@ -260,6 +260,10 @@ seon.setGeoLocationConfig(seonGeolocationConfig)
 
 
 # Changelog
+## 6.5.1
+-	Fixed linter errors for invalid package reference (`javax.naming..`)
+-	Internal improvements and changes for upcoming features.
+
 ## 6.5.0
 -	Added Behaviour Monitoring feature, which allows detection of suspicious device behaviour.
 -	New `suspicious_flags` field in the Fraud API response. Possible values include:
