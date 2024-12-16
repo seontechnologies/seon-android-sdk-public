@@ -227,7 +227,7 @@ Use the `SeonGeolocationConfig` object created with `SeonGeolocationConfigBuilde
 Make sure you call `setGeolocationConfig` on `Seon` before calling `getFingerprintBase64` or `stopBehaviourMonitoring` for the SDK to enrich the collected device information with location data.
 For the most accurate results when using the Geofence API, prefer Behaviour Monitoring over simply calling `getFingerprintBase64`. Refer to the relevant section in the documentation about how to set up and use Behaviour Monitoring.
 
-To recieve status codes about the geolocation collection, pass the `SeonCallbackWithGeo` interface to `getFingerprintBase64` or `stopBehaviourMonitoring`. Example:
+To receive status codes about the geolocation collection, pass the `SeonCallbackWithGeo` interface to `getFingerprintBase64` or `stopBehaviourMonitoring`. Example:
 
 ```
 // Initialise Seon SDK, enable geolocation collection and prompt the user for appropriate location permission(s)
