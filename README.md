@@ -11,7 +11,7 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 - _(optional)_ **READ_PHONE_STATE** permission for `is_on_call` and `device_cellular_id` (under API 28)
 - _(optional)_ **ACCESS_WIFI_STATE** permission for `wifi_ssid` (under API 27)
 - _(optional)_ **ACCESS_NETWORK_STATE** permission for `network_config` for WiFi configurations and **READ_PHONE_STATE** for cellular data configurations
-- _(optional)_ **ACCESS_FINE_LOCATION** (starting from API 29) and ACCESS_COARSE_LOCATION (starting from API 27) permission for `wifi_mac_address`, `wifi_ssid`, `device_location`*
+- _(optional)_ **ACCESS_FINE_LOCATION** (starting from API 29) and **ACCESS_COARSE_LOCATION** (starting from API 27) permission for `wifi_mac_address`, `wifi_ssid`, `device_location`*
 - _(optional)_ **ACCESS_BACKGROUND_LOCATION** (starting from API 29) permission for to get location updates even if the application is in the background
 - _(optional)_ **com.google.android.providers.gsf.permission.READ_GSERVICES** for `gsf_id`
 
@@ -25,7 +25,7 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 
 ```
 dependencies {
-  implementation 'io.seon.androidsdk:androidsdk:6.5.1'
+  implementation 'io.seon.androidsdk:androidsdk:6.6.0'
 }
 ```
 
@@ -214,6 +214,45 @@ try {
 
 > __Note:__ Currently even if the integration has been done correctly there won't be a **device_location** field in the Fraud API response until the feature flag has been set by our customer success team.
 
+> Note: Android SDK Version 6.6.0 or higher and the following Geolocation integration setup is required to use the Geofence API. For further information please visit https://docs.seon.io/api-reference/geofence-api
+
+### Important: Collecting consent and necessary permissions from the end user for location tracking is required.
+
+Use the `SeonGeolocationConfig` object created with `SeonGeolocationConfigBuilder` to customise how geolocation is collected or just use the instance as-is for default values. The following properties are available on object:
+- `setGeolocationEnabled` - Setter to enable or disable geolocation collection. Defaults to false.
+- `setPrefetchEnabled` - By passing true the geolocation service is going to pre-fetch a valid location as soon as a `Seon` object is created. Defaults to true.
+- `setMaxGeoLocationCacheAgeSec` - Sets the maximum allowed age of a location object in seconds. Default value is 600.
+- `setGeolocationServiceTimeoutMs` - Sets the maximum time in milliseconds `getFingerprintBase64` or `stopBehaviourMonitoring` can wait for a valid location. Default value is 3000.
+
+Make sure you call `setGeolocationConfig` on `Seon` before calling `getFingerprintBase64` or `stopBehaviourMonitoring` for the SDK to enrich the collected device information with location data.
+For the most accurate results when using the Geofence API, prefer Behaviour Monitoring over simply calling `getFingerprintBase64`. Refer to the relevant section in the documentation about how to set up and use Behaviour Monitoring.
+
+To recieve status codes about the geolocation collection, pass the `SeonCallbackWithGeo` interface to `getFingerprintBase64` or `stopBehaviourMonitoring`. Example:
+
+```
+// Initialise Seon SDK, enable geolocation collection and prompt the user for appropriate location permission(s)
+// ...
+seon.getFingerprintBase64(new SeonCallbackWithGeo() {
+    @Override
+    public void onComplete(String response) {
+        // Successfully received fingerprint response with device location data.
+    }
+    @Override
+    public void onCompleteWithGeoFailure(String response, int geoStatusCode) {
+        // Successfully received fingerprint response, with status code.
+    }
+});
+```
+The SDK can return the following Geolocation specific status codes in the `onCompleteWithGeoFailure`  callback as the value of `geoStatusCode`:
+- `-1` : `Unknown` : An unknown error has occured during geolocation collection.
+- `0` : `Success` : Successfully returned location data.
+- `1` : `Fail` : Failed to return location data.
+- `2` : `Timeout` : The location service has timed out.
+- `3` : `No Permission` : The user has denied the use of location services.
+- `4` : `No Provider` : There are currently no available location providers to determine the device’s position.
+- `5` : `Disabled` : Location services are disabled on the device.
+- `6` : `No Support` : There's no location service support.
+
 ### Kotlin Integration
 ```
 // Create a custom Geolocation Config object
@@ -260,6 +299,22 @@ seon.setGeoLocationConfig(seonGeolocationConfig)
 
 
 # Changelog
+## 6.6.0
+- Introducing the following new response fields to help determine the security and integrity of the device:
+  - `is_app_cloned` : Indicates whether the current app instance integrating the SDK is a cloned version, helping identify potential fraud and validate the application integrity.
+  - `system_integrity` : Indicates the integrity of the device, helping to assess its security state. It's possible values are:
+    - `ORIGINAL` : Indicates a high-confidence secure device state.
+    - `POSSIBLY_COMPROMISED` : Suggests a suspicious device state with a modified bootloader but no other direct evidence of compromise.
+    - `COMPROMISED` : Indicates a highly compromised state. This is a strong indicator that the OS has been tampered with.
+    - `UNKNOWN` : The integrity status cannot be determined.
+- Introducing new response field: `true_device_id`.
+- Added new callback signature type `SeonCallbackWithGeo` to handle gelocation status responses.
+- Raised the SDK's targetSdkVersion to API level 34.
+- Optimized resource handling.
+- Fix `physical_memory` inconsistencies on some devices.
+- Minor fixes and improvements.
+- Internal changes.
+
 ## 6.5.1
 -	Fixed linter errors for invalid package reference (`javax.naming..`)
 -	Internal improvements and changes for upcoming features.
