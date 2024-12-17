@@ -230,7 +230,7 @@ For the most accurate results when using the Geofence API, prefer Behaviour Moni
 To receive status codes about the geolocation collection, pass the `SeonCallbackWithGeo` interface to `getFingerprintBase64` or `stopBehaviourMonitoring`. Example:
 
 ```
-// Initialise Seon SDK, enable geolocation collection and prompt the user for appropriate location permission(s)
+// You should initialise the Seon SDK, enable geolocation collection and prompt the user for appropriate location permission(s) before trying to retrieve a fingerprint with valid location data.
 // ...
 seon.getFingerprintBase64(new SeonCallbackWithGeo() {
     @Override
@@ -239,13 +239,12 @@ seon.getFingerprintBase64(new SeonCallbackWithGeo() {
     }
     @Override
     public void onCompleteWithGeoFailure(String response, int geoStatusCode) {
-        // Successfully received fingerprint response, with status code.
+        // Successfully received fingerprint response, without valid location data and geolocation service status code.
     }
 });
 ```
 The SDK can return the following Geolocation specific status codes in the `onCompleteWithGeoFailure`  callback as the value of `geoStatusCode`:
 - `-1` : `Unknown` : An unknown error has occured during geolocation collection.
-- `0` : `Success` : Successfully returned location data.
 - `1` : `Fail` : Failed to return location data.
 - `2` : `Timeout` : The location service has timed out.
 - `3` : `No Permission` : The user has denied the use of location services.
@@ -302,7 +301,7 @@ seon.setGeoLocationConfig(seonGeolocationConfig)
 ## 6.6.0
 - Introducing the following new response fields to help determine the security and integrity of the device:
   - `is_app_cloned` : Indicates whether the current app instance integrating the SDK is a cloned version, helping identify potential fraud and validate the application integrity.
-  - `system_integrity` : Indicates the integrity of the device, helping to assess its security state. It's possible values are:
+  - `system_integrity` : Indicates the integrity of the device, helping to assess its security state. Possible values are:
     - `ORIGINAL` : Indicates a high-confidence secure device state.
     - `POSSIBLY_COMPROMISED` : Suggests a suspicious device state with a modified bootloader but no other direct evidence of compromise.
     - `COMPROMISED` : Indicates a highly compromised state. This is a strong indicator that the OS has been tampered with.
