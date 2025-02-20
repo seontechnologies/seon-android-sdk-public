@@ -21,11 +21,19 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 
 ## Installation
 
-#### Using Gradle
+#### Using Gradle with Groovy
 
 ```
 dependencies {
-  implementation 'io.seon.androidsdk:androidsdk:6.6.0'
+  implementation 'io.seon.androidsdk:androidsdk:6.6.1'
+}
+```
+
+#### Using Gradle with Kotlin DSL
+
+```
+dependencies {
+    implementation("io.seon.androidsdk:androidsdk:6.6.1")
 }
 ```
 
@@ -229,6 +237,8 @@ For the most accurate results when using the Geofence API, prefer Behaviour Moni
 
 To receive status codes about the geolocation collection, pass the `SeonCallbackWithGeo` interface to `getFingerprintBase64` or `stopBehaviourMonitoring`. Example:
 
+#### Java:
+
 ```
 // You should initialise the Seon SDK, enable geolocation collection and prompt the user for appropriate location permission(s) before trying to retrieve a fingerprint with valid location data.
 // ...
@@ -243,6 +253,25 @@ seon.getFingerprintBase64(new SeonCallbackWithGeo() {
     }
 });
 ```
+
+#### Kotlin:
+```
+// You should initialize the Seon SDK, enable geolocation collection, 
+// and prompt the user for appropriate location permission(s) before 
+// trying to retrieve a fingerprint with valid location data.
+// ...
+
+seon.getFingerprintBase64(object : SeonCallbackWithGeo {
+    override fun onComplete(response: String) {
+        // Successfully received fingerprint response with device location data.
+    }
+
+    override fun onCompleteWithGeoFailure(response: String, geoStatusCode: Int) {
+        // Successfully received fingerprint response, without valid location data and geolocation service status code.
+    }
+})
+```
+
 The SDK can return the following Geolocation specific status codes in the `onCompleteWithGeoFailure`  callback as the value of `geoStatusCode`:
 - `-1` : `Unknown` : An unknown error has occured during geolocation collection.
 - `1` : `Fail` : Failed to return location data.
@@ -298,6 +327,12 @@ seon.setGeoLocationConfig(seonGeolocationConfig)
 
 
 # Changelog
+## 6.6.1
+- Introducing Supremo remote control detection:
+    - `remote_control_provider` possible return values has been extended with `Supremo`.
+- Improved SDK stability.
+- Internal changes and improvements for upcoming features.
+
 ## 6.6.0
 - Introducing the following new response fields to help determine the security and integrity of the device:
   - `is_app_cloned` : Indicates whether the current app instance integrating the SDK is a cloned version, helping identify potential fraud and validate the application integrity.
