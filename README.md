@@ -8,7 +8,7 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 ## Requirements
 - Android 5.0 or higher (API level 21)
 - **INTERNET** permission
-- _(optional)_ **READ_PHONE_STATE** permission for `is_on_call` and `device_cellular_id` (under API 28)
+- _(optional)_ **READ_PHONE_STATE** permission for `device_cellular_id` (under API 28) and the full functionality of `is_on_call`
 - _(optional)_ **ACCESS_WIFI_STATE** permission for `wifi_ssid` (under API 27)
 - _(optional)_ **ACCESS_NETWORK_STATE** permission for `network_config` for WiFi configurations and **READ_PHONE_STATE** for cellular data configurations
 - _(optional)_ **ACCESS_FINE_LOCATION** (starting from API 29) and **ACCESS_COARSE_LOCATION** (starting from API 27) permission for `wifi_mac_address`, `wifi_ssid`, `device_location`*
@@ -25,7 +25,7 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 
 ```
 dependencies {
-  implementation 'io.seon.androidsdk:androidsdk:6.6.1'
+  implementation 'io.seon.androidsdk:androidsdk:6.7.0'
 }
 ```
 
@@ -33,7 +33,7 @@ dependencies {
 
 ```
 dependencies {
-    implementation("io.seon.androidsdk:androidsdk:6.6.1")
+    implementation("io.seon.androidsdk:androidsdk:6.7.0")
 }
 ```
 
@@ -327,6 +327,13 @@ seon.setGeoLocationConfig(seonGeolocationConfig)
 
 
 # Changelog
+## 6.7.0
+- Added payload compression which considerably reduces output size.
+- Improved behaviour monitoring exception messages.
+- Introduced fallback mechanism for `is_on_call` when `READ_PHONE_STATE` permission is not granted.
+- Improved emulator detection.
+- Internal changes and improvements for upcoming features.
+
 ## 6.6.1
 - Introducing Supremo remote control detection:
     - `remote_control_provider` possible return values has been extended with `Supremo`.
