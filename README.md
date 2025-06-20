@@ -25,7 +25,7 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 
 ```
 dependencies {
-  implementation 'io.seon.androidsdk:androidsdk:6.7.0'
+  implementation 'io.seon.androidsdk:androidsdk:6.7.1'
 }
 ```
 
@@ -33,7 +33,7 @@ dependencies {
 
 ```
 dependencies {
-    implementation("io.seon.androidsdk:androidsdk:6.7.0")
+    implementation("io.seon.androidsdk:androidsdk:6.7.1")
 }
 ```
 
@@ -327,6 +327,9 @@ seon.setGeoLocationConfig(seonGeolocationConfig)
 
 
 # Changelog
+## 6.7.1
+- Optimised payload size in some rare, edge cases.
+- Internal changes and improvements.
 ## 6.7.0
 - Added payload compression which considerably reduces output size.
 - Improved behaviour monitoring exception messages.
