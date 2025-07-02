@@ -69,7 +69,7 @@ val sessionID = "CUSTOM_SESSION_ID"
 //
 // Optional - You can optionally set a custom timeout for the SDK's network call
 // with passing the following method to SeonBuilder: withDnsTimeout(int timeoutInMillisec)
-// Note: Passing 0 here effectively skips the netowrk logic which in turn won't
+// Note: Passing 0 here effectively skips the network logic which in turn won't
 // populate the Fraud API fields with device_ip_* and dns_ip_* prefixes
 
 val sfp = SeonBuilder().withContext(applicationContext).withSessionId(sessionID).build()
@@ -97,7 +97,7 @@ final String SESSION_ID = "CUSTOM_SESSION_ID";
 //
 // Optional - You can optionally set a custom timeout for the SDK's network call
 // with passing the following method to SeonBuilder: withDnsTimeout(int timeoutInMillisec)
-// Note: Passing 0 here effectively skips the netowrk logic which in turn won't
+// Note: Passing 0 here effectively skips the network logic which in turn won't
 // populate the Fraud API fields with device_ip_* and dns_ip_* prefixes
 
 Seon seonFingerprint = new SeonBuilder()
@@ -129,7 +129,7 @@ The monitoring must be started with calling `startBehaviourMonitoring` wherever 
 -	`"possible_device_farm"`: Suggests that the device might be part of a device farm used for fraudulent activities.
 -	`"possible_vishing"`: Flags possible vishing (voice phishing) activity, where the user might be coerced into providing sensitive information.
 -	`"possible_ongoing_call"`: Flags possible ongoing phone call, which could be useful information in case the **READ_PHONE_STATE** permission wasn't granted for `is_on_call` field to work. This behaviour based flag does not need any permissions to work, but it's only a best-effort metric.
-- **To be continously improved and extended with new signals**
+- **To be continuously improved and extended with new signals**
 
 ### Java Integration
 
@@ -141,7 +141,7 @@ final String SESSION_ID = "CUSTOM_SESSION_ID";
 //
 // Optional - You can optionally set a custom timeout for the SDK's network call
 // with passing the following method to SeonBuilder: withDnsTimeout(int timeoutInMillisec)
-// Note: Passing 0 here effectively skips the netowrk logic which in turn won't
+// Note: Passing 0 here effectively skips the network logic which in turn won't
 // populate the Fraud API fields with device_ip_* and dns_ip_* prefixes
 
 Seon seonFingerprint = new SeonBuilder()
@@ -183,7 +183,7 @@ val sessionID = "CUSTOM_SESSION_ID"
 //
 // Optional - You can optionally set a custom timeout for the SDK's network call
 // with passing the following method to SeonBuilder: withDnsTimeout(int timeoutInMillisec)
-// Note: Passing 0 here effectively skips the netowrk logic which in turn won't
+// Note: Passing 0 here effectively skips the network logic which in turn won't
 // populate the Fraud API fields with device_ip_* and dns_ip_* prefixes
 
 val seonFingerprint = SeonBuilder()
@@ -352,7 +352,7 @@ seon.setGeoLocationConfig(seonGeolocationConfig)
     - `COMPROMISED` : Indicates a highly compromised state. This is a strong indicator that the OS has been tampered with.
     - `UNKNOWN` : The integrity status cannot be determined.
 - Introducing new response field: `true_device_id`.
-- Added new callback signature type `SeonCallbackWithGeo` to handle gelocation status responses.
+- Added new callback signature type `SeonCallbackWithGeo` to handle geolocation status responses.
 - Raised the SDK's targetSdkVersion to API level 34.
 - Optimized resource handling.
 - Fix `physical_memory` inconsistencies on some devices.
