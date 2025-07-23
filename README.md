@@ -25,7 +25,7 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 
 ```
 dependencies {
-  implementation 'io.seon.androidsdk:androidsdk:6.7.1'
+  implementation 'io.seon.androidsdk:androidsdk:6.8.0'
 }
 ```
 
@@ -33,7 +33,7 @@ dependencies {
 
 ```
 dependencies {
-    implementation("io.seon.androidsdk:androidsdk:6.7.1")
+    implementation("io.seon.androidsdk:androidsdk:6.8.0")
 }
 ```
 
@@ -69,7 +69,7 @@ val sessionID = "CUSTOM_SESSION_ID"
 //
 // Optional - You can optionally set a custom timeout for the SDK's network call
 // with passing the following method to SeonBuilder: withDnsTimeout(int timeoutInMillisec)
-// Note: Passing 0 here effectively skips the netowrk logic which in turn won't
+// Note: Passing 0 here effectively skips the network logic which in turn won't
 // populate the Fraud API fields with device_ip_* and dns_ip_* prefixes
 
 val sfp = SeonBuilder().withContext(applicationContext).withSessionId(sessionID).build()
@@ -97,7 +97,7 @@ final String SESSION_ID = "CUSTOM_SESSION_ID";
 //
 // Optional - You can optionally set a custom timeout for the SDK's network call
 // with passing the following method to SeonBuilder: withDnsTimeout(int timeoutInMillisec)
-// Note: Passing 0 here effectively skips the netowrk logic which in turn won't
+// Note: Passing 0 here effectively skips the network logic which in turn won't
 // populate the Fraud API fields with device_ip_* and dns_ip_* prefixes
 
 Seon seonFingerprint = new SeonBuilder()
@@ -141,7 +141,7 @@ final String SESSION_ID = "CUSTOM_SESSION_ID";
 //
 // Optional - You can optionally set a custom timeout for the SDK's network call
 // with passing the following method to SeonBuilder: withDnsTimeout(int timeoutInMillisec)
-// Note: Passing 0 here effectively skips the netowrk logic which in turn won't
+// Note: Passing 0 here effectively skips the network logic which in turn won't
 // populate the Fraud API fields with device_ip_* and dns_ip_* prefixes
 
 Seon seonFingerprint = new SeonBuilder()
@@ -183,7 +183,7 @@ val sessionID = "CUSTOM_SESSION_ID"
 //
 // Optional - You can optionally set a custom timeout for the SDK's network call
 // with passing the following method to SeonBuilder: withDnsTimeout(int timeoutInMillisec)
-// Note: Passing 0 here effectively skips the netowrk logic which in turn won't
+// Note: Passing 0 here effectively skips the network logic which in turn won't
 // populate the Fraud API fields with device_ip_* and dns_ip_* prefixes
 
 val seonFingerprint = SeonBuilder()
@@ -325,11 +325,40 @@ seon.setGeoLocationConfig(seonGeolocationConfig)
 ```
 
 
+### 16 KB page size compatibility on Google Play
+- Starting November 1st, 2025, all new apps and updates to existing apps submitted to Google Play and targeting Android 15+ devices must support 16 KB page sizes on 64-bit devices.
+- SEON Android SDK is compatible with the 16 KB page size from version `6.8.0`
+- Your application might need to meet further requirements to pass the compatibility check:
+    - Based on Google documentation, `Android Gradle Plugin version 8.5 or lower` are only 16 KB page size compatible if you ship with legacy(compressed) native libraries. :exclamation:
+    - You can enable legacy(compressed) packaging for native libraries in your `build.gradle` :
+    ```
+    android {
+        ....
+        packagingOptions {
+            jniLibs {
+                useLegacyPackaging true
+            }
+        }
+    }
+    ```
+    - Warning: When you use compressed shared libraries, your app takes up more space when installed, as libraries are extracted from the APK and copied onto disk. Your app might more frequently fail to install because this increase in disk usage means there is less space on device. To avoid this, upgrade to AGP version 8.5.1 or higher. :exclamation:
+    - If you are using `Android Gradle Plugin version 8.5.1 or higher`, you are not required to use legacy packaging. :heavy_check_mark:
+- To stay Google Play compliant, please always refer to the latest [Google documentation on this matter](https://developer.android.com/guide/practices/page-sizes).
+
 
 # Changelog
+## 6.8.0
+- Added 16 KB page size support to ensure Google Play compatibility beyond November 1st, 2025.
+    - SEON Android SDK is fully compatible with 16 KB page size from this version (`6.8.0`).
+    - There are more requirements to be 16 KB page size compatible. Please carefully read the [Google documentation](https://developer.android.com/guide/practices/page-sizes).
+    - You can also check out our short section on this topic [here](#16-kb-page-size-compatibility-on-google-play).
+- Improved app cloning detection to cover advanced tools.
+- Internal changes and improvements.
+
 ## 6.7.1
 - Optimised payload size in some rare, edge cases.
 - Internal changes and improvements.
+
 ## 6.7.0
 - Added payload compression which considerably reduces output size.
 - Improved behaviour monitoring exception messages.
@@ -352,7 +381,7 @@ seon.setGeoLocationConfig(seonGeolocationConfig)
     - `COMPROMISED` : Indicates a highly compromised state. This is a strong indicator that the OS has been tampered with.
     - `UNKNOWN` : The integrity status cannot be determined.
 - Introducing new response field: `true_device_id`.
-- Added new callback signature type `SeonCallbackWithGeo` to handle gelocation status responses.
+- Added new callback signature type `SeonCallbackWithGeo` to handle geolocation status responses.
 - Raised the SDK's targetSdkVersion to API level 34.
 - Optimized resource handling.
 - Fix `physical_memory` inconsistencies on some devices.
