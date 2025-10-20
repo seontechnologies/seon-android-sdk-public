@@ -9,10 +9,9 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 - Android 5.0 or higher (API level 21)
 - **INTERNET** permission
 - _(optional)_ **READ_PHONE_STATE** permission for `device_cellular_id` (under API 28) and the full functionality of `is_on_call`
-- _(optional)_ **ACCESS_WIFI_STATE** permission for `wifi_ssid` (under API 27)
+- _(optional)_ **ACCESS_WIFI_STATE** permission for `wifi_ssid` (under API 27) and more precise unique IDs
 - _(optional)_ **ACCESS_NETWORK_STATE** permission for `network_config` for WiFi configurations and **READ_PHONE_STATE** for cellular data configurations
 - _(optional)_ **ACCESS_FINE_LOCATION** (starting from API 29) and **ACCESS_COARSE_LOCATION** (starting from API 27) permission for `wifi_mac_address`, `wifi_ssid`, `device_location`*
-- _(optional)_ **ACCESS_BACKGROUND_LOCATION** (starting from API 29) permission for to get location updates even if the application is in the background
 - _(optional)_ **com.google.android.providers.gsf.permission.READ_GSERVICES** for `gsf_id`
 
 > __Note:__ If the optional permissions listed are not available the application, the values collected using those permissions will be ignored. We recommend using as much permission as possible based on your use-case to provide reliable device fingerprint.
@@ -25,7 +24,7 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 
 ```
 dependencies {
-  implementation 'io.seon.androidsdk:androidsdk:6.8.0'
+  implementation 'io.seon.androidsdk:androidsdk:6.8.1'
 }
 ```
 
@@ -33,7 +32,7 @@ dependencies {
 
 ```
 dependencies {
-    implementation("io.seon.androidsdk:androidsdk:6.8.0")
+    implementation("io.seon.androidsdk:androidsdk:6.8.1")
 }
 ```
 
@@ -347,6 +346,16 @@ seon.setGeoLocationConfig(seonGeolocationConfig)
 
 
 # Changelog
+## 6.8.1
+- Removed the following permissions from our `AndroidManifest.xml`:
+    > __Note:__ If you depend any of the optional features connected to these permissions, from this version onwards you need to add them to your `AndroidManifest.xml` manually
+    > Please, read carefully what features are connected to these permissions in our [Requirements section](#requirements).
+    - `android.permission.ACCESS_FINE_LOCATION`
+    - `android.permission.ACCESS_COARSE_LOCATION`
+    - `android.permission.READ_PHONE_STATE`
+    - `android.permission.READ_PHONE_NUMBERS`
+- Internal changes and improvements.
+
 ## 6.8.0
 - Added 16 KB page size support to ensure Google Play compatibility beyond November 1st, 2025.
     - SEON Android SDK is fully compatible with 16 KB page size from this version (`6.8.0`).
