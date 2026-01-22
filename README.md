@@ -347,7 +347,7 @@ seon.setGeoLocationConfig(seonGeolocationConfig)
 
 # Changelog
 ## 6.8.2
-- Fixed return value of `cpu_hash` when the pasteboard is empty. Now it correctly returns null instead of the hashed empty string ( `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`)
+- Fixed return value of `cpu_hash` when the field is empty. Now it correctly returns null instead of the hashed empty string ( `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`)
 - Fixed return value of `pasteboard_hash` when the pasteboard is empty. Now it correctly returns null instead of the hashed empty string ( `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`)
  > ⚠️ __Note:__ Please make sure to expect null values instead of the empty hash (`e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`) from this version and adjust any rules you might have in the Scoring Engine including either `cpu_hash` and `pasteboard_hash` as needed!
 - Various internal detection improvements
