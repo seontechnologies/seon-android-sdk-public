@@ -24,7 +24,7 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 
 ```
 dependencies {
-  implementation 'io.seon.androidsdk:androidsdk:6.8.3'
+  implementation 'io.seon.androidsdk:androidsdk:6.8.4'
 }
 ```
 
@@ -32,7 +32,7 @@ dependencies {
 
 ```
 dependencies {
-    implementation("io.seon.androidsdk:androidsdk:6.8.3")
+    implementation("io.seon.androidsdk:androidsdk:6.8.4")
 }
 ```
 
@@ -350,6 +350,10 @@ seon.setGeoLocationConfig(seonGeolocationConfig)
 
 
 # Changelog
+## 6.8.4
+- Introduced several optimizations to reduce the SDK size.
+- Introduced performance improvements.
+- Internal changes and improvements for upcoming features.
 ## 6.8.3
 - Introducing a new value for `suspicious_flags` named `possible_cloud_device` possibly detecting devices running in a cloud environment. Please see the [suspicious_flags](https://github.com/seontechnologies/seon-android-sdk-public#possible-suspicious_flags-values) section for more detail.
 ## 6.8.2
