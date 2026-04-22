@@ -24,7 +24,7 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 
 ```
 dependencies {
-  implementation 'io.seon.androidsdk:androidsdk:6.8.4'
+  implementation 'io.seon.androidsdk:androidsdk:6.8.5'
 }
 ```
 
@@ -32,7 +32,7 @@ dependencies {
 
 ```
 dependencies {
-    implementation("io.seon.androidsdk:androidsdk:6.8.4")
+    implementation("io.seon.androidsdk:androidsdk:6.8.5")
 }
 ```
 
@@ -350,6 +350,9 @@ seon.setGeoLocationConfig(seonGeolocationConfig)
 
 
 # Changelog
+## 6.8.5
+- Fixed the false positive 16KB incompatibility warning in APK Analyzer
+- Fixed a rare issue in a subset of Android 10 devices
 ## 6.8.4
 - Introduced several optimizations to reduce the SDK size.
 - Introduced performance improvements.
