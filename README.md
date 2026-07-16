@@ -351,9 +351,9 @@ seon.setGeoLocationConfig(seonGeolocationConfig)
 
 # Changelog
 ## 6.9.0
-- ⚠️ Increased target API level to 36.
-- Introduced new field `esim_capabilities`.
-- Introduced new field `esim_state`.
+- ⚠️ Increased target API level to **36**.
+- Introduced new field `esim_capabilities`, visit [SEON docs](https://docs.seon.io/api-reference/fraud-api#android-sdk) for further information.
+- Introduced new field `esim_state`, visit [SEON docs](https://docs.seon.io/api-reference/fraud-api#android-sdk) for further information.
 - Updated both transitive and internal dependencies.
 - Improved `interfering_apps` detection.
 
