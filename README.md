@@ -24,7 +24,7 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 
 ```
 dependencies {
-  implementation 'io.seon.androidsdk:androidsdk:6.8.6'
+  implementation 'io.seon.androidsdk:androidsdk:6.9.0'
 }
 ```
 
@@ -32,7 +32,7 @@ dependencies {
 
 ```
 dependencies {
-    implementation("io.seon.androidsdk:androidsdk:6.8.6")
+    implementation("io.seon.androidsdk:androidsdk:6.9.0")
 }
 ```
 
@@ -350,11 +350,18 @@ seon.setGeoLocationConfig(seonGeolocationConfig)
 
 
 # Changelog
+## 6.9.0
+- ⚠️ Increased target API level to 36.
+- Introduced new field `esim_capabilities`.
+- Introduced new field `esim_state`.
+- Updated both transitive and internal dependencies.
+- Improved `interfering_apps` detection.
+
 ## 6.8.6
-- Fixed unexpected crash in emulator detection logic
+- Fixed unexpected crash in emulator detection logic.
 ## 6.8.5
-- Fixed the false positive 16KB incompatibility warning in APK Analyzer
-- Fixed a rare issue in a subset of Android 10 devices
+- Fixed the false positive 16KB incompatibility warning in APK Analyzer.
+- Fixed a rare issue in a subset of Android 10 devices.
 ## 6.8.4
 - Introduced several optimizations to reduce the SDK size.
 - Introduced performance improvements.
