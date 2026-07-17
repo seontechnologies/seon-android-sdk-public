@@ -24,7 +24,7 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 
 ```
 dependencies {
-  implementation 'io.seon.androidsdk:androidsdk:6.9.0'
+  implementation 'io.seon.androidsdk:androidsdk:6.9.1'
 }
 ```
 
@@ -32,7 +32,7 @@ dependencies {
 
 ```
 dependencies {
-    implementation("io.seon.androidsdk:androidsdk:6.9.0")
+    implementation("io.seon.androidsdk:androidsdk:6.9.1")
 }
 ```
 
@@ -350,6 +350,8 @@ seon.setGeoLocationConfig(seonGeolocationConfig)
 
 
 # Changelog
+## 6.9.1
+- Fixed R8 error while targeting API level 37.
 ## 6.9.0
 - ⚠️ Increased target API level to **36**.
 - Introduced new field `esim_capabilities`, visit [SEON docs](https://docs.seon.io/api-reference/fraud-api#android-sdk) for further information.
