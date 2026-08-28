@@ -18,13 +18,15 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 
 > __*device_location:__ Please see the Geolocation Integration section for more info
 
+> __Note:__ From Android 17 (Android 16 QPR3 beta on Pixel devices) a blue dot appears in the status bar to signal when an application is accessing location data, including network related data points like the WiFi SSID. If you would like to avoid this indicator, opportunistic SSID collection mode is available from version `6.9.2` — see the [changelog](#692) for details.
+
 ## Installation
 
 #### Using Gradle with Groovy
 
 ```
 dependencies {
-  implementation 'io.seon.androidsdk:androidsdk:6.9.1'
+  implementation 'io.seon.androidsdk:androidsdk:6.9.2'
 }
 ```
 
@@ -32,7 +34,7 @@ dependencies {
 
 ```
 dependencies {
-    implementation("io.seon.androidsdk:androidsdk:6.9.1")
+    implementation("io.seon.androidsdk:androidsdk:6.9.2")
 }
 ```
 
@@ -350,6 +352,16 @@ seon.setGeoLocationConfig(seonGeolocationConfig)
 
 
 # Changelog
+## 6.9.2
+- Introduced opportunistic SSID collection mode.
+    -  From Android 17 (Android 16 QPR3 beta on Pixel devices) Google introduced a blue dot in the status bar to signal when an application is accessing location data, just like the green dot for camera/microphone access.
+        It can be triggered not only by direct location queries, but also by accessing sensitive network related data points, like the WiFi SSID.
+    - When opportunistic SSID collection mode is enabled, the SDK only collects the WiFi SSID on Android versions that do not show this indicator.
+        If the Geolocation feature is explicitly enabled in the SDK config, the SDK will still attempt to collect the WiFi SSID on every device.
+    - This optional feature can be enabled by calling `withOpportunisticSsidCollectionEnabled(true)` on `SeonBuilder`. This feature is disabled by default.
+    - As device manufacturers may adopt and implement this indicator differently, this mode is considered experimental and its behaviour is subject to change in future releases.
+- Various internal detection improvements
+- Internal changes and improvements for upcoming features.
 ## 6.9.1
 - Fixed R8 error while targeting API level 37.
 ## 6.9.0
