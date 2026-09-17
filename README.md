@@ -26,7 +26,7 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 
 ```
 dependencies {
-  implementation 'io.seon.androidsdk:androidsdk:6.9.2'
+  implementation 'io.seon.androidsdk:androidsdk:6.9.3'
 }
 ```
 
@@ -34,7 +34,7 @@ dependencies {
 
 ```
 dependencies {
-    implementation("io.seon.androidsdk:androidsdk:6.9.2")
+    implementation("io.seon.androidsdk:androidsdk:6.9.3")
 }
 ```
 
@@ -352,6 +352,10 @@ seon.setGeoLocationConfig(seonGeolocationConfig)
 
 
 # Changelog
+## 6.9.3
+- Improved cloud device farm detection
+- Internal toolchain version upgrades
+- Internal changes and improvements for upcoming features
 ## 6.9.2
 - Introduced opportunistic SSID collection mode.
     -  From Android 17 (Android 16 QPR3 beta on Pixel devices) Google introduced a blue dot in the status bar to signal when an application is accessing location data, just like the green dot for camera/microphone access.
