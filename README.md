@@ -26,7 +26,7 @@ Account takeovers, multiple account signups and payments can easily be avoided b
 
 ```
 dependencies {
-  implementation 'io.seon.androidsdk:androidsdk:6.9.3'
+  implementation 'io.seon.androidsdk:androidsdk:6.9.5'
 }
 ```
 
@@ -34,7 +34,7 @@ dependencies {
 
 ```
 dependencies {
-    implementation("io.seon.androidsdk:androidsdk:6.9.3")
+    implementation("io.seon.androidsdk:androidsdk:6.9.5")
 }
 ```
 
@@ -328,6 +328,23 @@ seon.setGeoLocationConfig(seonGeolocationConfig)
         seon.setGeolocationEnabled(true);
         seon.setGeoLocationConfig(seonGeolocationConfig);
 ```
+### Opting out of permissions declared by our SDK
+- While we strive to only declare non-intrusive default permissions, you can always choose to opt out some of our declared permissions.
+- For example, to opt out from `com.google.android.providers.gsf.permission.READ_GSERVICES`, you can add the same permission with `tools:node="remove"` node to disable it. 
+- Example:
+    ```
+    <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+        <uses-permission
+            android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"
+            tools:node="remove" />
+
+        <application ...>
+            ...
+        </application>
+    </manifest>
+    ```
 
 
 ### 16 KB page size compatibility on Google Play
@@ -352,6 +369,20 @@ seon.setGeoLocationConfig(seonGeolocationConfig)
 
 
 # Changelog
+## 6.9.5
+- Fixed an edge case related to `setDnsTimeout` config option.
+## 6.9.4
+- Due to a possible breach in one of our supplier's infrastructure, we chose to rotate our `.aar` signing keys.
+    - We are not aware of the binary signing key being leaked, we rotated the keys as a precaution. 
+    - The previous versions remain safe to use.
+    - The key rotation should have no visible impacts on our customers' build processes, as Gradle does not compare signatures by default. 
+        - If you chose to opt in Gradle's Dependency Verification feature, you might need to accept the new signature.
+- From this version, `com.google.android.providers.gsf.permission.READ_GSERVICES` is added to AndroidManifest.xml by default.
+    - It is a silent permission and it will allow our unique identifiers to be more accurate. 
+        - If you want to opt-out, see our [permission opt-out guide](#opting-out-of-permissions-declared-by-our-sdk).
+- Added `setDnsTimeout` config option to the `Seon` object.
+    - `withDnsTimeout` option was already available on `SeonBuilder` object.
+- Internal changes and improvements for upcoming features
 ## 6.9.3
 - Improved cloud device farm detection
 - Internal toolchain version upgrades
