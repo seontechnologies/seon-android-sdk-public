@@ -370,7 +370,7 @@ seon.setGeoLocationConfig(seonGeolocationConfig)
 
 # Changelog
 ## 6.9.5
-- Fixed an edge case related to `setDnsTimeout` config option.
+- Fixed an edge case related to `setDnsTimeout` config option introduced in `6.9.4`.
 ## 6.9.4
 - Due to a possible breach in one of our supplier's infrastructure, we chose to rotate our `.aar` signing keys.
     - We are not aware of the binary signing key being leaked, we rotated the keys as a precaution. 
@@ -380,7 +380,7 @@ seon.setGeoLocationConfig(seonGeolocationConfig)
 - From this version, `com.google.android.providers.gsf.permission.READ_GSERVICES` is added to AndroidManifest.xml by default.
     - It is a silent permission and it will allow our unique identifiers to be more accurate. 
         - If you want to opt-out, see our [permission opt-out guide](#opting-out-of-permissions-declared-by-our-sdk).
-- Added `setDnsTimeout` config option to the `Seon` object.
+- Added `setDnsTimeout` config option to the `Seon` object, so it's modifiable without rebuilding the object.
     - `withDnsTimeout` option was already available on `SeonBuilder` object.
 - Internal changes and improvements for upcoming features
 ## 6.9.3
